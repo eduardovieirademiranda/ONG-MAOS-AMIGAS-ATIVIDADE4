@@ -1,90 +1,77 @@
-ONG MÃOS AMIGAS — Atividade 2
-🎯 Objetivo
+# 🌍 ONG MÃOS AMIGAS — Atividade 3
 
-Aplicar CSS3 para estilizar e padronizar as páginas do site da ONG MÃOS AMIGAS, com foco em design system, responsividade e acessibilidade.
+Projeto desenvolvido como parte da **Atividade Prática 3** do curso de **Análise e Desenvolvimento de Sistemas** (Cruzeiro do Sul Virtual).
 
-🎨 Recursos Utilizados
+Nesta etapa foram aplicados conceitos de **HTML5**, **JavaScript**, **SPA (Single Page Application)**, **jQuery** e **máscaras de formulário**.
 
-HTML5 — estrutura semântica
+---
 
-CSS3 — tipografia, cores, espaçamento e responsividade
+## 🏠 Página Inicial (Home)
 
-Google Fonts: Cabin
+A *Home* é a porta de entrada do site e tem como objetivo apresentar a ONG e suas ações sociais.  
+Ela contém as seções principais:
 
-Paleta de Cores
-Uso	Cor	Hex
-Primária	Azul	#0077b6
-Secundária	Azul escuro	#005f8d
-Destaque	Azul claro	#5CB3FF
-Fundo	Cinza claro	#f4f4f4
-Texto	Cinza escuro	#333333
-Branco	Base neutra	#ffffff
-♿ Acessibilidade
+| Seção | Descrição |
+|-------|------------|
+| **Hero (Topo)** | Destaque com a frase *“Juntos Podemos Transformar o Mundo”*, atualizada via JavaScript. |
+| **Quem Somos** | Explica a missão da ONG e mostra uma imagem representando o trabalho voluntário. |
+| **Como Ajudar** | Exibe informações de doação via PIX, e-mail e QR Code interativo. |
+| **Projetos em Destaque** | Mostra dois projetos principais com imagens e descrições. |
 
-Contraste mínimo ≥ 4.5 : 1
+📱 O QR Code de doação permite que os visitantes façam uma contribuição rapidamente usando o celular.
 
-Navegação simples e intuitiva
+---
 
-Links e botões com foco visível (:focus-visible)
+## 🧾 Página de Cadastro
 
-Estrutura semântica correta (header, main, footer)
+A página **cadastro.html** contém um formulário para novos voluntários.  
+Campos incluídos:
+- Nome completo  
+- E-mail  
+- Telefone  
+- CPF  
+- CEP e Cidade  
+- Área de interesse  
+- Mensagem opcional  
 
-Uso de aria-current="page" para indicar a página ativa
+🔧 Recursos adicionais:
+- Máscaras automáticas de CPF, Telefone e CEP (via **jQuery Mask**).  
+- Mensagens de validação nativas do navegador.  
+- Cards laterais com informações de **doação** e **motivos para ser voluntário**.
 
-✅ Validação W3C
+---
 
-imagens/docs/
-![descrição da imagem](imagens/docs/w3c-atv2.png)
-![descrição da imagem](imagens/docs/w3cpatv2.png)
-![descrição da imagem](imagens/docs/w3cpatv2.png)
+## 💡 Página de Projetos
 
+A página **projetos.html** apresenta os principais projetos da ONG:
 
-
-Nenhum erro encontrado.
-
-O CSS foi revisado e testado em diferentes resoluções.
-
-Página	Resultado	Print
-index.html	✅ Sem erros	
-
-projetos.html	✅ Sem erros	
-
-cadastro.html	✅ Sem erros	
-📸 Visual das Páginas
-Página	Visual
-Início	
-
-Início	   
-![Página Inicial](imagens/docs/index-1.png)
-![Página Inicial](imagens/docs/index2.png)
-
-| Projetos | | **Projetos** | ![Projetos](imagens/docs/proj1.png) |
-
-| Projetos | | **Projetos** | ![Projetos](imagens/docs/proj2.png) |
+| Projeto | Descrição |
+|----------|------------|
+| **Projeto Esperança** | Voltado a crianças em vulnerabilidade social, com esportes e atividades educativas. |
 |
 
-| Cadastro | | **Cadastro** | ![Cadastro](imagens/docs/cad1.png) |
+Cada projeto é exibido em formato de **card responsivo**, mantendo a harmonia visual com o restante do site.
 
-| Cadastro | | **Cadastro** | ![Cadastro](imagens/docs/cad2.pngg) |
+---
 
-|Cdastro | **Cadastro** | ![Cadastro](imagens/docs/cad3.png) |
+## 🧩 Scripts Implementados
+
+```javascript
+// Atualiza o título da Home dinamicamente
+const titulo = document.getElementById("Juntos");
+if (titulo) titulo.textContent = "Juntos Podemos Transformar Vidas";
 
 
-⚙️ Execução
+// SPA simples (salva última página visitada)
+localStorage.setItem("maosamigas.pagina", id);
 
-Abra qualquer arquivo .html com o Live Server do VS Code ou diretamente no navegador.
-As páginas são totalmente estáticas e usam apenas HTML + CSS.
+📷 Prints de Validação (W3C)
 
-🧠 Resumo
+As três páginas foram testadas no W3C Validator
+ e estão 100% válidas.
 
-A Atividade 2 consolidou o uso de CSS3, com foco em:
 
-Aplicação do Design System;
-
-Estruturação visual e componentes reutilizáveis;
-
-Responsividade em 3 breakpoints (992 px, 768 px e 420 px);
-
-Acessibilidade com foco e contraste adequados;
-
-Validação W3C 100 % sem erros.
+Página	Resultado	Print
+![Validação da página inicial no W3C](imagens/docs/index-w3c.png)
+![Validação da página Projeto no W3C](imagens/docs/projw3c.png)
+![Validação da página Cadastro W3C](imagens/docs/cadw3c.png)
