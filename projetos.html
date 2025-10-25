@@ -1,63 +1,79 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos Sociais — ONG Mãos Amigas</title>
+  <title>ONG Mãos Amigas — Projetos</title>
+  <meta name="description" content="Conheça os projetos sociais desenvolvidos pela ONG Mãos Amigas.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ONG Mãos Amigas — Projetos">
+  <meta property="og:description" content="Conheça os projetos sociais desenvolvidos pela ONG Mãos Amigas.">
+  <meta property="og:image" content="imagens/ogcover.png">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ONG Mãos Amigas — Projetos">
+  <meta name="twitter:description" content="Conheça os projetos sociais desenvolvidos pela ONG Mãos Amigas.">
+  <meta name="twitter:image" content="imagens/ogcover.png">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="page--projetos">
   <!-- CABEÇALHO -->
-  <header>
-    <h1>ONG Mãos Amigas</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <div class="container header__inner">
+      <nav class="navbar flex items-center justify-between" aria-label="Menu principal">
+        <a href="index.html" class="brand flex items-center gap-2">
+          <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="120" height="120" loading="lazy">
+          <span>ONG Mãos Amigas</span>
+        </a>
+
+        <div class="links menu__list flex gap-2">
+          <a href="index.html" class="botao--menu">🏠 Início</a>
+          <a href="projetos.html" class="ativo botao--menu" aria-current="page">📋 Projetos</a>
+          <a href="cadastro.html" class="botao--menu">🤝 Cadastro</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <section>
+  <main class="section">
+    <section class="container">
       <h2>Nossos Projetos Sociais</h2>
       <p>Conheça algumas das ações que realizamos para melhorar a qualidade de vida das pessoas e promover a solidariedade nas comunidades.</p>
     </section>
 
-    <section>
-      <h3>Projeto Esperança</h3>
-      <img src="imagens/esporte-saude.jpg" alt="Crianças em atividades do projeto Esperança" width="340">
-      <p>Voltado para crianças em situação de vulnerabilidade, o projeto oferece atividades esportivas e educativas que incentivam o desenvolvimento pessoal e social.</p>
-    </section>
+    <section class="container grid-12 mt-3">
+      <h2>Projetos em Destaque</h2>
 
-    <section>
-      <h3>Projeto Recomeço</h3>
-      <img src="imagens/doacoes.jpg"  alt="Grupo de voluntários ajudando famílias" width="340">
+      <article class="card md:col-6 col-12">
+        <div class="card__body">
+          <h3 class="card__title">Projeto Esperança</h3>
+          <img src="imagens/esporte-saude.jpg" alt="Crianças em atividades do projeto Esperança" width="340">
+          <p>Voltado para crianças em situação de vulnerabilidade, o projeto oferece atividades esportivas e educativas que incentivam o desenvolvimento pessoal e social.</p>
+        </div>
+      </article>
 
-      <p>Focado em famílias que passam por dificuldades financeiras, o projeto oferece apoio alimentar, emocional e capacitação profissional.</p>
-    </section>
-
-    <section>
-      <h3>Como Ajudar</h3>
-      <p>Você pode contribuir de várias formas:</p>
-      <ul>
-        <li>Participando como voluntário;</li>
-        <li>Realizando doações financeiras ou de alimentos;</li>
-        <li>Divulgando nossos projetos nas redes sociais.</li>
-      </ul>
-      <p><strong>Juntos, fazemos a diferença!</strong></p>
+      <article class="card md:col-6 col-12">
+        <div class="card__body">
+          <h3 class="card__title">Projeto Vida em Ação</h3>
+          <img src="imagens/Hortas.jpg" alt="Voluntários ajudando em um projeto de Hortas" width="340">
+          <p>Promove campanhas de arrecadação de alimentos e produtos de higiene, garantindo dignidade para famílias em situação de vulnerabilidade.</p>
+        </div>
+      </article>
     </section>
   </main>
 
   <!-- RODAPÉ -->
-  <footer>
-    <p>&copy; 2025 ONG Mãos Amigas. Todos os direitos reservados.</p>
-    <p>Contato: 
-      <a href="mailto:contato@maosamigas.org">contato@maosamigas.org</a> | 
-      Telefone: (11) 98888-7777
-    </p>
+  <footer class="footer center">
+    <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
