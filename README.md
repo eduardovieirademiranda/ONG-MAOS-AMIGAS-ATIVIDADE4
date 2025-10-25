@@ -1,35 +1,90 @@
-✅ Modelo de README.md — Atividade 1
-# ONG Mãos Amigas — Atividade 1
+ONG MÃOS AMIGAS — Atividade 2
+🎯 Objetivo
 
-Este repositório contém a **primeira etapa** do projeto da disciplina **Desenvolvimento Front-End para Web** da **Cruzeiro do Sul Virtual**.
+Aplicar CSS3 para estilizar e padronizar as páginas do site da ONG MÃOS AMIGAS, com foco em design system, responsividade e acessibilidade.
 
-## 📋 Descrição
-A Atividade 1 tem como objetivo desenvolver a **estrutura HTML5** de um site fictício de uma ONG, com marcação semântica, acessibilidade básica e um formulário com máscaras funcionais.
+🎨 Recursos Utilizados
 
-## 🧱 Estrutura
+HTML5 — estrutura semântica
+
+CSS3 — tipografia, cores, espaçamento e responsividade
+
+Google Fonts: Cabin
+
+Paleta de Cores
+Uso	Cor	Hex
+Primária	Azul	#0077b6
+Secundária	Azul escuro	#005f8d
+Destaque	Azul claro	#5CB3FF
+Fundo	Cinza claro	#f4f4f4
+Texto	Cinza escuro	#333333
+Branco	Base neutra	#ffffff
+♿ Acessibilidade
+
+Contraste mínimo ≥ 4.5 : 1
+
+Navegação simples e intuitiva
+
+Links e botões com foco visível (:focus-visible)
+
+Estrutura semântica correta (header, main, footer)
+
+Uso de aria-current="page" para indicar a página ativa
+
+✅ Validação W3C
+
+imagens/docs/
+![descrição da imagem](imagens/docs/w3c-atv2.png)
+![descrição da imagem](imagens/docs/w3cpatv2.png)
+![descrição da imagem](imagens/docs/w3cpatv2.png)
 
 
-index.html
-projetos.html
-cadastro.html
-imagens/
+
+Nenhum erro encontrado.
+
+O CSS foi revisado e testado em diferentes resoluções.
+
+Página	Resultado	Print
+index.html	✅ Sem erros	
+
+projetos.html	✅ Sem erros	
+
+cadastro.html	✅ Sem erros	
+📸 Visual das Páginas
+Página	Visual
+Início	
+
+Início	   
+![Página Inicial](imagens/docs/index-1.png)
+![Página Inicial](imagens/docs/index2.png)
+
+| Projetos | | **Projetos** | ![Projetos](imagens/docs/proj1.png) |
+
+| Projetos | | **Projetos** | ![Projetos](imagens/docs/proj2.png) |
+|
+
+| Cadastro | | **Cadastro** | ![Cadastro](imagens/docs/cad1.png) |
+
+| Cadastro | | **Cadastro** | ![Cadastro](imagens/docs/cad2.pngg) |
+
+|Cdastro | **Cadastro** | ![Cadastro](imagens/docs/cad3.png) |
 
 
-## 💡 Tecnologias utilizadas
-- **HTML5**  
-- **JavaScript (jQuery Mask Plugin)** — usado apenas para aplicar máscaras em campos de CPF, Telefone e CEP
+⚙️ Execução
 
-## ✅ Requisitos atendidos
-- Uso de tags semânticas (`header`, `main`, `section`, `footer`)
-- Estrutura organizada em múltiplas páginas
-- Formulário funcional com máscaras
-- Imagens otimizadas e com texto alternativo
-- Código validado no **W3C Validator**
-    
-![Validação da página index](imagens/docs/index-w3c.png)
-![Validação da página projetos](imagens/docs/projeto-w3c.png)
-![Validação da página cadastro](imagens/docs/cadastro-w3c.png)
+Abra qualquer arquivo .html com o Live Server do VS Code ou diretamente no navegador.
+As páginas são totalmente estáticas e usam apenas HTML + CSS.
 
-## 📬 Contato
-Desenvolvido por *Eduardo Vieira de Miranda*  
-[text](https://github.com/eduardovieirademiranda)
+🧠 Resumo
+
+A Atividade 2 consolidou o uso de CSS3, com foco em:
+
+Aplicação do Design System;
+
+Estruturação visual e componentes reutilizáveis;
+
+Responsividade em 3 breakpoints (992 px, 768 px e 420 px);
+
+Acessibilidade com foco e contraste adequados;
+
+Validação W3C 100 % sem erros.
