@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Cadastro de Voluntário — ONG Mãos Amigas</title>
+  <title>ONG Mãos Amigas — Cadastro de Voluntário</title>
   <meta name="description" content="Cadastre-se como voluntário da ONG Mãos Amigas e participe de ações sociais transformadoras." />
 
   <!-- Open Graph -->
@@ -17,36 +16,41 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cadastro de Voluntário — ONG Mãos Amigas" />
-  <meta name="twitter:description" content="Junte-se como voluntário e apoie ações sociais." />
+  <meta name="twitter:description" content="Cadastre-se como voluntário e participe de ações sociais transformadoras." />
   <meta name="twitter:image" content="imagens/ogcover.png" />
 
-  <!-- CSS global do projeto -->
+  <!-- CSS principal -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="cadastro">
-  <!-- CABEÇALHO -->
-  <header>
-    <nav class="navbar container" aria-label="Principal">
-      <a href="index.html" class="brand">
-        <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="40" height="40" />
-        <span>ONG Mãos Amigas</span>
-      </a>
+<body class="page--cadastro">
+  <!-- Skip link -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
-      <div class="links">
-        <a href="index.html">Início</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="cadastro.html" aria-current="page" class="ativo">Cadastro</a>
-      </div>
-    </nav>
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <div class="container header__inner">
+      <nav class="navbar flex items-center justify-between" aria-label="Menu principal">
+        <a href="index.html" class="brand flex items-center gap-2">
+          <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="120" height="120" loading="lazy" />
+          <span>ONG Mãos Amigas</span>
+        </a>
+
+        <div class="links menu__list flex gap-2">
+          <a href="index.html" class="botao--menu">🏠 Início</a>
+          <a href="projetos.html" class="botao--menu">📋 Projetos</a>
+          <a href="cadastro.html" class="ativo botao--menu" aria-current="page">🤝 Cadastro</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="section container" id="conteudo">
-    <h1 id="titulo-cadastro">Cadastro de Voluntário</h1>
+  <main id="conteudo" class="container">
+    <h1>Cadastro de Voluntário</h1>
     <p>Preencha o formulário abaixo e junte-se à ONG Mãos Amigas em nossas ações sociais.</p>
 
-    <!-- Mensagem de feedback (oculta por padrão; exibida via JS após envio) -->
+    <!-- Feedback de envio -->
     <div id="form-feedback" class="sr-feedback" role="status" aria-live="polite" hidden>
       ✅ Cadastro enviado! Em breve entraremos em contato.
     </div>
@@ -132,7 +136,7 @@
 
       <p class="mt-1" id="privacidade">
         <small>Ao enviar, você concorda com o uso dos dados para fins de contato sobre ações e projetos da ONG.
-        Para solicitar remoção/correção, envie e-mail para
+        Para solicitar remoção ou correção, envie e-mail para
         <a href="mailto:ongmaosamigas@gmail.com">ongmaosamigas@gmail.com</a>.</small>
       </p>
     </form>
@@ -142,17 +146,17 @@
       <h2 id="como-doar-titulo">Como Doar</h2>
       <p>Você pode apoiar nossos projetos com doações:</p>
       <ul>
-        <li>PIX (CNPJ): 11.222.333/0011-44</li>
-        <li>E-mail: <a href="mailto:ongmaosamigas@gmail.com">ongmaosamigas@gmail.com</a></li>
-        <li>Chave alternativa: <a href="mailto:eduardo.mi.2005@gmail.com">eduardo.mi.2005@gmail.com</a></li>
+        <li><strong>PIX (CNPJ):</strong> 11.222.333/0011-44</li>
+        <li><strong>E-mail:</strong> <a href="mailto:ongmaosamigas@gmail.com">ongmaosamigas@gmail.com</a></li>
+        <li><strong>Chave alternativa:</strong> <a href="mailto:eduardo.mi.2005@gmail.com">eduardo.mi.2005@gmail.com</a></li>
       </ul>
 
-      <button id="btn-qr" type="button" aria-controls="qr-area" aria-expanded="false">
+      <button id="btn-qr" type="button" aria-controls="qr-area" aria-expanded="false" class="botao--principal">
         Mostrar QR do PIX
       </button>
 
       <figure id="qr-area" hidden class="mt-1">
-        <img src="imagens/pix-qr.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240" />
+        <img src="imagens/qrpix.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240" />
         <figcaption>Escaneie o QR Code para doar via PIX.</figcaption>
       </figure>
     </section>
@@ -164,17 +168,15 @@
   </main>
 
   <!-- RODAPÉ -->
-  <footer class="section">
-    <div class="container">
-      <p><small>&copy; ONG Mãos Amigas — Todos os direitos reservados.</small></p>
-    </div>
+  <footer class="footer center">
+    <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 
-  <!-- jQuery + jQuery Mask (CDN) -->
+  <!-- jQuery + jQuery Mask -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" referrerpolicy="no-referrer"></script>
 
-  <!-- Seu JS -->
+  <!-- JS principal -->
   <script src="js/script.js"></script>
 </body>
 </html>
