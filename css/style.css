@@ -10,19 +10,20 @@ html, body { height: 100%; }
 html:focus-within { scroll-behavior: smooth; }
 body, h1, h2, h3, p, ul { margin: 0; }
 ul { padding: 0; list-style: none; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; height: auto; }
 a { text-decoration: none; color: inherit; }
 
-/* ===== Design tokens (paleta & tipografia) ===== */
+/* ===== Tipografia ===== */
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
+/* ===== Design tokens (paleta & tipografia) ===== */
 :root{
   /* Marca */
   --brand: #0077b6;
   --brand-700: #005f8d;
   --brand-50: #e6f2fa;
 
-  /* Paleta complementar (8 cores no total) */
+  /* Paleta complementar */
   --blue-600: #3A8DDE;
   --blue-500: #5CB3FF;
   --blue-300: #6DAEDB;
@@ -44,17 +45,17 @@ a { text-decoration: none; color: inherit; }
   --surface-alt: #f7fbff;
   --surface-border: #dee2e6;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-
   /* Tipografia / medidas */
   --font: "Cabin", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --fs-hero: clamp(1.8rem, 2vw + 1.2rem, 3rem);
   --fs-h2: clamp(1.25rem, 1vw + 1rem, 1.75rem);
   --fs-body: 1rem;
 
-  /* Sombra */
+  /* Raio e sombra */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
   --shadow-sm: 0 2px 6px rgba(0,0,0,.06);
   --shadow-md: 0 6px 18px rgba(0,0,0,.08);
 }
@@ -74,14 +75,15 @@ body{
   padding: 0 1rem;
 }
 
-/* ===== Layout genérico ===== */
 main{ padding-block: 2rem; }
 .section{ padding-block: 2rem; }
 .titulo{ font-size: var(--fs-h2); color: var(--neutral-900); margin-bottom: .75rem; }
 .subtitulo{ font-weight: 600; color: var(--neutral-700); margin-bottom: .5rem; }
 .lead{ color: var(--neutral-700); }
 
-/* ===== Cabeçalho / Navegação ===== */
+/* ==============================================
+   Cabeçalho / Navegação
+============================================== */
 .header{
   background: linear-gradient(90deg, var(--brand-700), var(--blue-600));
   color: #fff;
@@ -122,6 +124,7 @@ main{ padding-block: 2rem; }
   align-items: center;
   gap: 1.25rem;
 }
+.menu__list a,
 .navbar a{
   color: #fff;
   opacity: .95;
@@ -129,13 +132,19 @@ main{ padding-block: 2rem; }
   border-radius: var(--radius-sm);
   transition: transform .12s ease, background-color .12s ease, opacity .12s ease;
 }
+.menu__list a:hover,
 .navbar a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
-.navbar a.ativo, .navbar a[aria-current="page"]{
+.menu__list a.ativo,
+.menu__list a[aria-current="page"],
+.navbar a.ativo,
+.navbar a[aria-current="page"]{
   background: rgba(255,255,255,.18);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
 }
 
-/* ===== Hero / Início ===== */
+/* ==============================================
+   Hero (se usar)
+============================================== */
 .hero{
   display: grid;
   grid-template-columns: 1.15fr .85fr;
@@ -154,8 +163,14 @@ main{ padding-block: 2rem; }
   display: flex; gap: .75rem; flex-wrap: wrap;
 }
 
-/* ===== Botões ===== */
-.btn, .botao{
+/* ==============================================
+   Botões
+============================================== */
+.btn,
+.botao,
+.botao--menu,
+.botao--principal,
+.botao--secundario{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -164,15 +179,26 @@ main{ padding-block: 2rem; }
   font-weight: 600;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: filter .12s ease, transform .12s ease, box-shadow .12s ease;
+  transition: filter .12s ease, transform .12s ease, box-shadow .12s ease, background-color .2s ease;
 }
-.btn:active, .botao:active{ transform: translateY(1px); }
 
-.btn-primary, .botao{
+.btn:active,
+.botao:active,
+.botao--menu:active,
+.botao--principal:active,
+.botao--secundario:active{ transform: translateY(1px); }
+
+.btn,
+.botao,
+.botao--menu,
+.botao--principal{
   background: var(--brand); color: #fff;
   box-shadow: var(--shadow-sm);
 }
-.btn-primary:hover, .botao:hover{ filter: brightness(1.05); }
+.btn:hover,
+.botao:hover,
+.botao--menu:hover,
+.botao--principal:hover{ filter: brightness(1.05); }
 
 .botao--secundario{
   background: var(--brand-50);
@@ -184,7 +210,12 @@ main{ padding-block: 2rem; }
   color: #fff;
 }
 
-/* ===== Cards ===== */
+/* Botão SPA centralizado */
+.spa-toggle { text-align: center; margin: 1.5rem 0; }
+
+/* ==============================================
+   Cards
+============================================== */
 .card{
   background: var(--surface);
   border: 1px solid var(--surface-border);
@@ -198,58 +229,10 @@ main{ padding-block: 2rem; }
   box-shadow: var(--shadow-md);
 }
 .card__title{ color: var(--brand); margin-bottom: .3rem; }
-
-/* ===== Formulários ===== */
-.campo{ margin-bottom: 1rem; }
-label{ font-weight: 600; color: var(--neutral-800); display: block; margin-bottom: .25rem; }
-input, select, textarea{
-  width: 100%;
-  padding: .75rem .9rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--surface-border);
-  background: var(--neutral-50);
-  font-family: var(--font);
-}
-input:focus, select:focus, textarea:focus{
-  outline: 2px solid var(--brand);
-  box-shadow: 0 0 0 3px rgba(0,119,182,.18);
-}
-.acoes{ text-align: right; }
-
-/* ===== Rodapé ===== */
-.footer{
-  margin-top: 2rem;
-  background: var(--neutral-900);
-  color: #eee;
-  padding: 1.25rem 0;
-  text-align: center;
-}
-.footer a{ color: #fff; opacity: .9; }
-.footer a:hover{ opacity: 1; text-decoration: underline; }
-
-/* ===== Utilitários ===== */
-.flex{ display: flex; }
-.items-center{ align-items: center; }
-.justify-between{ justify-content: space-between; }
-.gap-2{ gap: .5rem; }
-.mt-2{ margin-top: .5rem; }
-.mt-3{ margin-top: 1rem; }
-
-/* ===== Responsivo ===== */
-@media (max-width: 992px){
-  .hero{ grid-template-columns: 1fr; }
-}
-@media (max-width: 768px){
-  .header__inner{ flex-wrap: wrap; gap: .75rem; }
-  .navbar{ width: 100%; flex-wrap: wrap; gap: .5rem .75rem; }
-}
-@media (max-width: 420px){
-  .brand .logo{ width: 38px; height: 38px; }
-  .navbar a{ padding: .45rem .6rem; }
-}
+.card__body{ color: var(--neutral-800); }
 
 /* ==============================================
-   SEÇÃO: HOME & DESTAQUES (Atividade 3)
+   Abas (Home/Destaque – SPA)
 ============================================== */
 .menu__tabs{
   display: flex;
@@ -270,17 +253,22 @@ input:focus, select:focus, textarea:focus{
 .menu__tabs a:hover{
   background-color: var(--brand-50);
 }
-.menu__tabs a.ativo, .menu__tabs a[aria-current="page"]{
+.menu__tabs a.ativo,
+.menu__tabs a[aria-selected="true"],
+.menu__tabs a[aria-current="page"]{
   background-color: var(--brand);
   color: #fff;
 }
 
-/* Conteúdo das abas */
+/* Painéis */
 .tab-content{ display: none; animation: fadeIn 0.4s ease; }
 .tab-content:first-of-type{ display: block; }
 
+/* Fallback além do [hidden] para acessibilidade */
+[role="tabpanel"][hidden] { display: none !important; }
+
 /* ==============================================
-   SEÇÃO: PROJETOS
+   Seção Projetos (imagens)
 ============================================== */
 .projetos img{
   border-radius: var(--radius-md);
@@ -289,17 +277,55 @@ input:focus, select:focus, textarea:focus{
 }
 
 /* ==============================================
-   SEÇÃO: CADASTRO + QR CODE PIX
+   Formulários (Cadastro)
 ============================================== */
-#btn-qr{
-  margin-top: .75rem;
+.field, .campo { margin-bottom: 1rem; } /* cobre .field (novo) e .campo (legado) */
+label{
+  font-weight: 600;
+  color: var(--neutral-800);
+  display: block;
+  margin-bottom: .25rem;
+}
+input, select, textarea{
   width: 100%;
-  justify-content: center;
+  padding: .75rem .9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  background: var(--neutral-50);
+  font-family: var(--font);
+  color: var(--neutral-800);
 }
-#qr-area{
-  text-align: center;
-  margin-top: 1rem;
+input::placeholder, textarea::placeholder { color: var(--neutral-400); }
+
+input:focus, select:focus, textarea:focus{
+  outline: 2px solid var(--brand);
+  box-shadow: 0 0 0 3px rgba(0,119,182,.18);
 }
+
+.msg-erro{
+  display: block;
+  margin-top: .25rem;
+  font-size: .875rem;
+  color: #b00020; /* erro visível */
+}
+
+/* Região de feedback pós-envio */
+.sr-feedback{
+  margin: 1rem 0;
+  padding: .75rem 1rem;
+  border: 1px solid #cfe2ff;
+  background: #e7f1ff;
+  border-radius: var(--radius-md);
+  color: #084298;
+}
+
+/* Ações do formulário */
+.acoes{ text-align: right; }
+.btn { padding: .75rem 1rem; border: 0; border-radius: var(--radius-md); }
+
+/* QR PIX */
+#btn-qr{ margin-top: .75rem; width: 100%; justify-content: center; }
+#qr-area{ text-align: center; margin-top: 1rem; }
 #qr-area img{
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
@@ -307,37 +333,42 @@ input:focus, select:focus, textarea:focus{
 }
 
 /* ==============================================
-   ANIMAÇÕES
+   Rodapé
 ============================================== */
-@keyframes fadeIn{
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+.footer{
+  margin-top: 2rem;
+  background: var(--neutral-900);
+  color: #eee;
+  padding: 1.25rem 0;
+  text-align: center;
 }
+.footer a{ color: #fff; opacity: .9; }
+.footer a:hover{ opacity: 1; text-decoration: underline; }
 
 /* ==============================================
-   ACESSIBILIDADE (FOCO + SKIP LINK + TABS)
-   - Usa apenas :focus-visible para mostrar foco no teclado
-   - Skip link visível ao focar
-   - Painéis de aba realmente ocultos
+   Utilitários
 ============================================== */
+.flex{ display: flex; }
+.items-center{ align-items: center; }
+.justify-between{ justify-content: space-between; }
+.gap-2{ gap: .5rem; }
+.mt-1{ margin-top: .5rem; }
+.mt-2{ margin-top: 1rem; }
+.mt-3{ margin-top: 1.5rem; }
+.mt-4{ margin-top: 2rem; }
+.center{ text-align: center; }
 
-/* Foco visível global */
+/* ==============================================
+   Acessibilidade (FOCO + SKIP LINK)
+============================================== */
+/* Foco visível global (teclado) */
 :focus-visible {
   outline: 3px solid var(--brand);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* Foco específico em tabs e botões principais (consistência) */
-.menu__tabs a:focus-visible,
-.btn:focus-visible,
-.botao--principal:focus-visible,
-.botao--secundario:focus-visible {
-  outline: 3px solid var(--brand);
-  outline-offset: 2px;
-}
-
-/* Skip link: escondido até receber foco */
+/* Skip link: escondido até focar */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -353,56 +384,28 @@ input:focus, select:focus, textarea:focus{
   left: 8px;
 }
 
-/* Estados ocultos para painéis das abas (fallback além do hidden) */
-[role="tabpanel"][hidden] {
-  display: none !important;
-}
-
-/* ===== Botão principal (SPA) ===== */
-.botao--principal {
-  display: inline-block;
-  background-color: var(--brand);
-  color: var(--neutral-50);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-/* hover e foco (sem contorno no :focus genérico; quem mostra é :focus-visible) */
-.botao--principal:hover,
-.botao--principal:focus {
-  background-color: var(--brand-700);
-  transform: translateY(-2px);
-  outline: none;
-}
-
-/* container centralizado para o botão SPA */
-.spa-toggle {
-  text-align: center;
-  margin: 1.5rem 0;
-}
-
-/* animação de clique */
-.botao--principal:active {
-  transform: scale(0.97);
-}
-
-/* Alertas */
-.alert {
-  margin-top: 1rem;
-  padding: 0.875rem 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--surface-border);
-  background: var(--neutral-100);
-}
-.alert.success { border-color: #5cb85c; }
-
-:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+/* Campos inválidos (para aria-invalid=true) */
 [aria-invalid="true"] { border-color: #d00; }
-.skip-link { position:absolute; left:-9999px; top:auto; }
-.skip-link:focus-visible { left:16px; top:16px; z-index:9999; }
+
+/* ==============================================
+   Animações
+============================================== */
+@keyframes fadeIn{
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================================
+   Responsivo
+============================================== */
+@media (max-width: 992px){
+  .hero{ grid-template-columns: 1fr; }
+}
+@media (max-width: 768px){
+  .header__inner{ flex-wrap: wrap; gap: .75rem; }
+  .navbar{ width: 100%; flex-wrap: wrap; gap: .5rem .75rem; }
+}
+@media (max-width: 420px){
+  .brand .logo{ width: 38px; height: 38px; }
+  .menu__list a, .navbar a{ padding: .45rem .6rem; }
+}
