@@ -19,11 +19,12 @@
   <meta name="twitter:description" content="Conheça a ONG Mãos Amigas e participe dos nossos projetos." />
   <meta name="twitter:image" content="imagens/ogcover.png" />
 
+  <!-- CSS principal -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="page--home">
-  <!-- Skip link (acesso rápido com teclado) -->
+  <!-- Skip link -->
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
   <!-- CABEÇALHO -->
@@ -44,6 +45,7 @@
     </div>
   </header>
 
+  <!-- CONTEÚDO PRINCIPAL -->
   <main id="conteudo" class="container">
     <!-- BOTÃO SPA -->
     <div class="spa-toggle center">
@@ -52,11 +54,10 @@
       </button>
     </div>
 
-    <!-- Navegação por abas -->
+    <!-- NAVEGAÇÃO POR ABAS -->
     <nav class="menu__tabs" role="tablist" aria-label="Navegação entre seções">
       <a id="tab-home" class="tab ativo" role="tab" href="#home" data-page="home"
          aria-controls="home" aria-selected="true">🏠 Home</a>
-
       <a id="tab-destaque" class="tab" role="tab" href="#destaque" data-page="destaque"
          aria-controls="destaque" aria-selected="false">⭐ Destaque</a>
     </nav>
@@ -80,12 +81,30 @@
         <li><strong>E-mail:</strong> ongmaosamigas@gmail.com</li>
       </ul>
     </section>
+
+    <!-- SEÇÃO DESTAQUE -->
+    <section id="destaque" class="tab-content" role="tabpanel" aria-labelledby="tab-destaque" hidden>
+      <h2>Projetos em Destaque</h2>
+      <p>Confira algumas de nossas principais ações sociais em andamento.</p>
+
+      <article>
+        <h3>Projeto Esperança</h3>
+        <p>Iniciativa voltada a crianças e adolescentes, oferecendo atividades esportivas e educativas.</p>
+      </article>
+
+      <article>
+        <h3>Doação Solidária</h3>
+        <p>Campanha permanente de arrecadação de alimentos e roupas para famílias em situação de vulnerabilidade.</p>
+      </article>
+    </section>
   </main>
 
+  <!-- RODAPÉ -->
   <footer class="footer center">
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 
+  <!-- JS principal -->
   <script src="js/script.js"></script>
 </body>
 </html>
