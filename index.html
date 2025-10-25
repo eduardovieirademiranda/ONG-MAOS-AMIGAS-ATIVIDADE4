@@ -23,6 +23,9 @@
 </head>
 
 <body class="page--home">
+  <!-- Skip link (acesso rápido com teclado) -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
   <!-- CABEÇALHO -->
   <header class="header">
     <div class="container header__inner">
@@ -32,7 +35,6 @@
           <span>ONG Mãos Amigas</span>
         </a>
 
-        <!-- MENU DE NAVEGAÇÃO -->
         <div class="links menu__list flex gap-2">
           <a href="index.html" class="ativo botao--menu" aria-current="page">🏠 Início</a>
           <a href="projetos.html" class="botao--menu">📋 Projetos</a>
@@ -42,49 +44,41 @@
     </div>
   </header>
 
-  <main class="container">
-    <!-- BOTÕES HOME E DESTAQUE -->
-    <nav class="menu__tabs" aria-label="Navegação interna">
-      <a href="#home" class="tab ativo" data-page="home" aria-current="page">🏠 Home</a>
-      <a href="#destaque" class="tab" data-page="destaque">⭐ Destaque</a>
+  <main id="conteudo" class="container">
+    <!-- BOTÃO SPA -->
+    <div class="spa-toggle center">
+      <button id="togglePage" class="botao--principal" type="button" aria-controls="conteudo">
+        Alternar Página
+      </button>
+    </div>
+
+    <!-- Navegação por abas -->
+    <nav class="menu__tabs" role="tablist" aria-label="Navegação entre seções">
+      <a id="tab-home" class="tab ativo" role="tab" href="#home" data-page="home"
+         aria-controls="home" aria-selected="true">🏠 Home</a>
+
+      <a id="tab-destaque" class="tab" role="tab" href="#destaque" data-page="destaque"
+         aria-controls="destaque" aria-selected="false">⭐ Destaque</a>
     </nav>
 
     <!-- SEÇÃO HOME -->
-    <section id="home" class="tab-content">
+    <section id="home" class="tab-content" role="tabpanel" aria-labelledby="tab-home">
       <h1 id="Juntos">Juntos Podemos Transformar Vidas</h1>
       <p>Conectamos pessoas e comunidades para construir um futuro mais solidário e sustentável.</p>
 
       <h2>Quem Somos</h2>
-      <p>A <strong>ONG Mãos Amigas</strong> é uma organização sem fins lucrativos dedicada a promover a solidariedade e o desenvolvimento social por meio de ações que transformam vidas.</p>
-      <img src="imagens/voluntario 3.jpg" alt="Equipe de voluntários da ONG Mãos Amigas" width="800" height="450" loading="lazy" />
+      <p>
+        A <strong>ONG Mãos Amigas</strong> é uma organização sem fins lucrativos dedicada a promover a solidariedade e o desenvolvimento social por meio de ações que transformam vidas.
+      </p>
+
+      <img src="imagens/voluntario-3.jpg" alt="Equipe de voluntários da ONG Mãos Amigas em atividade comunitária" width="800" height="450" loading="lazy">
 
       <h2>Como Ajudar</h2>
       <p>Você pode contribuir com nossos projetos de várias formas. Cada doação ajuda a transformar vidas!</p>
       <ul>
         <li><strong>PIX:</strong> 11.222.333/0011-44</li>
         <li><strong>E-mail:</strong> ongmaosamigas@gmail.com</li>
-        <li><strong>Chave PIX alternativa:</strong> eduardo.mi.2005@gmail.com</li>
       </ul>
-    </section>
-
-    <!-- SEÇÃO DESTAQUE -->
-    <section id="destaque" class="tab-content">
-      <h2>Projetos em Destaque</h2>
-      <p>Conheça algumas das ações que realizamos para melhorar a qualidade de vida das pessoas e promover a solidariedade nas comunidades.</p>
-
-      <div class="grid-12 mt-3">
-        <article class="card md:col-6 col-12">
-          <h3 class="card__title">Projeto Esperança</h3>
-          <img src="imagens/esporte-saude.jpg" alt="Crianças em atividades do projeto Esperança" width="340" loading="lazy" />
-          <p>Voltado para crianças em situação de vulnerabilidade, o projeto oferece atividades esportivas e educativas que incentivam o desenvolvimento pessoal e social.</p>
-        </article>
-
-        <article class="card md:col-6 col-12">
-          <h3 class="card__title">Projeto Vida em Ação</h3>
-          <img src="imagens/Hortas.jpg" alt="Voluntários ajudando em um projeto de Hortas de alimentos" width="340" loading="lazy" />
-          <p>Promove campanhas de arrecadação de alimentos e produtos de higiene, garantindo dignidade para famílias em situação de vulnerabilidade.</p>
-        </article>
-      </div>
     </section>
   </main>
 
@@ -92,8 +86,6 @@
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 
-  <!-- JS SPA -->
- <script src="js/script.js"></script>
-
+  <script src="js/script.js"></script>
 </body>
 </html>

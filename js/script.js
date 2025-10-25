@@ -1,68 +1,141 @@
 document.addEventListener("DOMContentLoaded", function () {
+  /* =========================================================
+   *  TÍTULO (Index)
+   * ======================================================= */
   const titulo = document.getElementById("Juntos");
   if (titulo) titulo.textContent = "Juntos Podemos Transformar Vidas";
 
-  const tabs = document.querySelectorAll(".menu__tabs a[data-page]");
+  /* =========================================================
+   *  ABAS (do menu__tabs com data-page) + persistência
+   *  (compatível com seu HTML atual)
+   * ======================================================= */
+  const tabsData = document.querySelectorAll(".menu__tabs a[data-page]");
   const secoes = document.querySelectorAll(".tab-content");
 
-  if (tabs.length > 0 && secoes.length > 0) {
-    function mostrarSecao(id) {
-      secoes.forEach(sec => {
-        sec.style.display = (sec.id === id) ? "block" : "none";
-      });
+  function mostrarSecao(id) {
+    if (!secoes.length) return;
+    secoes.forEach((sec) => {
+      const ativa = sec.id === id;
+      sec.style.display = ativa ? "block" : "none";
+      if (ativa) sec.removeAttribute("hidden"); else sec.setAttribute("hidden", "");
+    });
 
-      tabs.forEach(tab => {
-        tab.classList.remove("ativo");
-        tab.removeAttribute("aria-current");
-      });
+    tabsData.forEach((tab) => {
+      tab.classList.remove("ativo");
+      tab.removeAttribute("aria-current");
+    });
 
-      const atual = document.querySelector(`.menu__tabs a[data-page="${id}"]`);
-      if (atual) {
-        atual.classList.add("ativo");
-        atual.setAttribute("aria-current", "page");
-      }
-
-      localStorage.setItem("maosamigas.pagina", id);
+    const atual = document.querySelector(`.menu__tabs a[data-page="${id}"]`);
+    if (atual) {
+      atual.classList.add("ativo");
+      atual.setAttribute("aria-current", "page");
     }
 
-    const paginaSalva = localStorage.getItem("maosamigas.pagina") || "home";
+    try {
+      localStorage.setItem("maosamigas.pagina", id);
+    } catch {}
+  }
+
+  if (tabsData.length && secoes.length) {
+    const paginaSalva =
+      (typeof localStorage !== "undefined" && localStorage.getItem("maosamigas.pagina")) ||
+      "home";
     mostrarSecao(paginaSalva);
 
-    tabs.forEach(tab => {
+    tabsData.forEach((tab) => {
       tab.addEventListener("click", function (e) {
         e.preventDefault();
-        mostrarSecao(this.getAttribute("data-page"));
+        const alvo = this.getAttribute("data-page");
+        if (alvo) mostrarSecao(alvo);
       });
     });
   }
 
-  if (typeof $ !== "undefined") {
-    if ($("#cpf").length) $("#cpf").mask("000.000.000-00");
-    if ($("#telefone").length) $("#telefone").mask("(00) 00000-0000");
-    if ($("#cep").length) $("#cep").mask("00000-000");
+  /* =========================================================
+   *  ABAS (versão .tab + botão #togglePage) — Index
+   *  (mantém compatibilidade com outra marcação de abas)
+   * ======================================================= */
+  (function spaTabsAlternativo() {
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+    const toggleButton = document.getElementById("togglePage");
+    if (!tabs.length || !contents.length) return;
+
+    let current = 0;
+
+    function changePage(index) {
+      tabs.forEach((t) => t.classList.remove("ativo"));
+      contents.forEach((c) => {
+        c.style.display = "none";
+        c.setAttribute("hidden", "");
+      });
+
+      tabs[index].classList.add("ativo");
+      contents[index].style.display = "block";
+      contents[index].removeAttribute("hidden");
+      current = index;
+
+      tabs.forEach((t) => t.removeAttribute("aria-current"));
+      tabs[index].setAttribute("aria-current", "page");
+    }
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        changePage(idx);
+      });
+    });
+
+    if (toggleButton) {
+      toggleButton.addEventListener("click", () => {
+        current = (current + 1) % contents.length;
+        changePage(current);
+      });
+    }
+
+    // inicia na primeira aba se não houver persistência ativa do bloco anterior
+    if (!tabsData.length) changePage(0);
+  })();
+
+  /* =========================================================
+   *  Destaque no menu superior conforme página atual
+   * ======================================================= */
+  (function marcaMenuAtivo() {
+    const menuLinks = document.querySelectorAll(".menu__list a");
+    if (!menuLinks.length) return;
+    const paginaAtual = window.location.pathname.split("/").pop() || "index.html";
+    menuLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href === paginaAtual) {
+        link.classList.add("ativo");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("ativo");
+        link.removeAttribute("aria-current");
+      }
+    });
+  })();
+
+  /* =========================================================
+   *  Máscaras (jQuery Mask) — CPF / Telefone / CEP
+   * ======================================================= */
+  if (window.jQuery) {
+    $("#cpf").length && $("#cpf").mask("000.000.000-00");
+    $("#telefone").length && $("#telefone").mask("(00) 00000-0000");
+    $("#cep").length && $("#cep").mask("00000-000");
   }
 
-  const menuLinks = document.querySelectorAll(".menu__list a");
-  const paginaAtual = window.location.pathname.split("/").pop();
+  /* =========================================================
+   *  QR do PIX (toggle acessível + fallback de imagem)
+   * ======================================================= */
+  (function qrPix() {
+    const btn = document.getElementById("btn-qr");
+    const area = document.getElementById("qr-area");
+    if (!btn || !area) return;
 
-  menuLinks.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href === paginaAtual) {
-      link.classList.add("ativo");
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.classList.remove("ativo");
-      link.removeAttribute("aria-current");
-    }
-  });
-
-  const btn = document.getElementById("btn-qr");
-  const area = document.getElementById("qr-area");
-
-  if (btn && area) {
     btn.addEventListener("click", function () {
-      const vaiAbrir = area.hasAttribute("hidden");
-      if (vaiAbrir) {
+      const oculto = area.hasAttribute("hidden");
+      if (oculto) {
         area.removeAttribute("hidden");
         btn.setAttribute("aria-expanded", "true");
         btn.textContent = "Esconder QR do PIX";
@@ -76,8 +149,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const img = area.querySelector("img");
     if (img) {
       img.addEventListener("error", () => {
-        area.innerHTML = '<p style="margin-top:8px;">QR ainda não disponível. Salve o arquivo em <code>imagens/pix-qr.png</code>.</p>';
+        area.innerHTML =
+          '<p style="margin-top:8px;">QR ainda não disponível. Salve o arquivo em <code>imagens/pix-qr.png</code>.</p>';
       });
     }
-  }
+  })();
+
+  /* =========================================================
+   *  Envio local do formulário (Cadastro) + mensagem sucesso
+   * ======================================================= */
+  (function envioLocal() {
+    const form = document.getElementById("form-cadastro");
+    const msg = document.getElementById("msg-sucesso");
+    if (!form || !msg) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // validação nativa
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // sucesso local
+      msg.hidden = false;
+      form.reset();
+
+      // acessibilidade
+      msg.setAttribute("tabindex", "-1");
+      msg.focus();
+
+      // esconde após alguns segundos
+      setTimeout(() => {
+        msg.hidden = true;
+      }, 6000);
+    });
+  })();
 });
