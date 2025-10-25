@@ -19,14 +19,17 @@
   <meta name="twitter:description" content="Participe como voluntário e ajude nossos projetos sociais.">
   <meta name="twitter:image" content="imagens/ogcover.png">
 
+  <!-- CSS global -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="cadastro">
+<body class="page--cadastro">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
   <!-- CABEÇALHO -->
   <header class="header">
     <div class="container header__inner">
-      <nav class="navbar flex items-center justify-between">
+      <nav class="navbar flex items-center justify-between" aria-label="Menu principal">
         <a href="index.html" class="brand flex items-center gap-2">
           <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="120" height="120" loading="lazy">
           <span>ONG Mãos Amigas</span>
@@ -42,88 +45,109 @@
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="section">
-    <section class="container">
-      <h1>Cadastro de Voluntário</h1>
-      <p>Preencha o formulário para participar das nossas ações sociais. Seus dados são utilizados apenas para contato.</p>
-    </section>
-
+  <main id="conteudo" class="section">
     <section class="container grid-12">
+      <!-- FORMULÁRIO -->
       <div class="md:col-6 col-12">
-        <form action="#" method="post" class="card" id="form-cadastro" novalidate>
+        <h1>Cadastro de Voluntário</h1>
+        <img src="imagens/voluntario_1.jpg" alt="Voluntário ajudando em projeto social" width="280" class="mt-2">
+        <p>Preencha o formulário abaixo e junte-se à ONG Mãos Amigas em nossas ações sociais.</p>
+
+        <form id="form-cadastro" class="card" action="#" method="post" novalidate aria-label="Formulário de cadastro de voluntário">
           <div class="card__body">
-            <h2 class="card__title">Seus Dados</h2>
+            <fieldset>
+              <legend>Dados Pessoais</legend>
 
-            <div class="campo">
-              <label for="nome">Nome completo</label>
-              <input type="text" id="nome" name="nome" required placeholder="Seu nome">
-            </div>
-
-            <div class="campo">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
-            </div>
-
-            <div class="campo">
-              <label for="telefone">Telefone</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-            </div>
-
-            <div class="campo">
-              <label for="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric">
-            </div>
-
-            <div class="grid-12 gap-2">
-              <div class="col-6">
-                <div class="campo">
-                  <label for="cep">CEP</label>
-                  <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric">
-                </div>
+              <div class="campo">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo" autocomplete="name">
               </div>
-              <div class="col-6">
-                <div class="campo">
-                  <label for="cidade">Cidade</label>
-                  <input type="text" id="cidade" name="cidade" placeholder="Sua cidade">
-                </div>
+
+              <div class="campo">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" inputmode="numeric">
               </div>
-            </div>
 
-            <div class="campo">
-              <label for="interesse">Área de interesse</label>
-              <select id="interesse" name="interesse" required>
-                <option value="">Selecione</option>
-                <option value="educacao">Educação</option>
-                <option value="saude">Saúde</option>
-                <option value="assistencia">Assistência Social</option>
-                <option value="comunicacao">Comunicação</option>
-              </select>
-            </div>
+              <div class="campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com" autocomplete="email">
+              </div>
 
-            <div class="campo">
-              <label for="mensagem">Mensagem (opcional)</label>
-              <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre você"></textarea>
-            </div>
+              <div class="campo">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" autocomplete="tel">
+              </div>
 
-            <div class="acoes">
-              <button type="submit" class="botao">Enviar cadastro</button>
+              <div class="campo">
+                <label for="nascimento">Data de nascimento</label>
+                <input type="date" id="nascimento" name="nascimento" required>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-3">
+              <legend>Endereço</legend>
+
+              <div class="campo">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" autocomplete="postal-code">
+              </div>
+
+              <div class="campo">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" id="logradouro" name="logradouro" placeholder="Rua/Avenida" autocomplete="address-line1">
+              </div>
+
+              <div class="campo">
+                <label for="numero">Número</label>
+                <input type="text" id="numero" name="numero" placeholder="123">
+              </div>
+
+              <div class="campo">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" placeholder="Bairro" autocomplete="address-level3">
+              </div>
+
+              <div class="campo">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Cidade" autocomplete="address-level2">
+              </div>
+
+              <div class="campo">
+                <label for="estado">Estado (UF)</label>
+                <select id="estado" name="estado" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>SP</option><option>RJ</option><option>MG</option><option>ES</option>
+                  <option>PR</option><option>SC</option><option>RS</option>
+                  <option>BA</option><option>PE</option><option>CE</option><option>AM</option>
+                  <option>PA</option><option>DF</option><option>GO</option><option>MT</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <div class="acoes mt-3">
+              <button type="submit" class="botao--principal">Enviar cadastro</button>
             </div>
           </div>
         </form>
+
+        <div id="msg-sucesso" class="alert success" role="status" aria-live="polite" hidden>
+          ✅ Cadastro enviado! Em breve entraremos em contato.
+        </div>
       </div>
 
+      <!-- COLUNA LATERAL -->
       <aside class="md:col-6 col-12">
         <div class="card">
           <div class="card__body">
             <h2 class="card__title">Como Doar</h2>
-            <p>Se preferir, você também pode apoiar nossos projetos com doações:</p>
+            <p>Você pode apoiar nossos projetos com doações:</p>
             <ul>
               <li><strong>PIX:</strong> 11.222.333/0011-44</li>
               <li><strong>E-mail:</strong> ongmaosamigas@gmail.com</li>
               <li><strong>Chave alternativa:</strong> eduardo.mi.2005@gmail.com</li>
             </ul>
 
-            <button id="btn-qr" class="botao botao--secundario" type="button" aria-controls="qr-area" aria-expanded="false">
+            <button id="btn-qr" class="botao--secundario" type="button" aria-controls="qr-area" aria-expanded="false">
               Mostrar QR do PIX
             </button>
 
@@ -134,7 +158,7 @@
           </div>
         </div>
 
-        <div class="card mt-3" id="doacao">
+        <div class="card mt-3">
           <div class="card__body">
             <h2 class="card__title">Por que ser voluntário?</h2>
             <p>Você contribui diretamente para transformar realidades e ainda desenvolve habilidades socioemocionais.</p>
@@ -149,9 +173,9 @@
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
   <script src="js/script.js"></script>
-
 </body>
 </html>

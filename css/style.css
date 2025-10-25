@@ -307,13 +307,97 @@ input:focus, select:focus, textarea:focus{
 }
 
 /* ==============================================
-   ANIMAÇÕES / ACESSIBILIDADE
+   ANIMAÇÕES
 ============================================== */
 @keyframes fadeIn{
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-a:focus-visible, button:focus-visible, input:focus-visible{
+
+/* ==============================================
+   ACESSIBILIDADE (FOCO + SKIP LINK + TABS)
+   - Usa apenas :focus-visible para mostrar foco no teclado
+   - Skip link visível ao focar
+   - Painéis de aba realmente ocultos
+============================================== */
+
+/* Foco visível global */
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Foco específico em tabs e botões principais (consistência) */
+.menu__tabs a:focus-visible,
+.btn:focus-visible,
+.botao--principal:focus-visible,
+.botao--secundario:focus-visible {
   outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
+
+/* Skip link: escondido até receber foco */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: 1000;
+}
+.skip-link:focus-visible {
+  left: 8px;
+}
+
+/* Estados ocultos para painéis das abas (fallback além do hidden) */
+[role="tabpanel"][hidden] {
+  display: none !important;
+}
+
+/* ===== Botão principal (SPA) ===== */
+.botao--principal {
+  display: inline-block;
+  background-color: var(--brand);
+  color: var(--neutral-50);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* hover e foco (sem contorno no :focus genérico; quem mostra é :focus-visible) */
+.botao--principal:hover,
+.botao--principal:focus {
+  background-color: var(--brand-700);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* container centralizado para o botão SPA */
+.spa-toggle {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* animação de clique */
+.botao--principal:active {
+  transform: scale(0.97);
+}
+
+/* Alertas */
+.alert {
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  background: var(--neutral-100);
+}
+.alert.success { border-color: #5cb85c; }
