@@ -401,3 +401,8 @@ input:focus, select:focus, textarea:focus{
   background: var(--neutral-100);
 }
 .alert.success { border-color: #5cb85c; }
+
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+[aria-invalid="true"] { border-color: #d00; }
+.skip-link { position:absolute; left:-9999px; top:auto; }
+.skip-link:focus-visible { left:16px; top:16px; z-index:9999; }
