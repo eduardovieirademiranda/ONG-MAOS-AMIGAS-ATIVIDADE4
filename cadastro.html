@@ -1,26 +1,26 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ONG Mãos Amigas — Cadastro de Voluntário</title>
-  <meta name="description" content="Cadastre-se como voluntário da ONG Mãos Amigas e participe de ações sociais transformadoras." />
+  <meta name="description" content="Cadastre-se como voluntário da ONG Mãos Amigas e participe de ações sociais transformadoras.">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Cadastro de Voluntário — ONG Mãos Amigas" />
-  <meta property="og:description" content="Participe como voluntário e ajude nossos projetos sociais." />
-  <meta property="og:image" content="imagens/ogcover.png" />
-  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cadastro de Voluntário — ONG Mãos Amigas">
+  <meta property="og:description" content="Participe como voluntário e ajude nossos projetos sociais.">
+  <meta property="og:image" content="imagens/ogcover.png">
+  <meta property="og:locale" content="pt_BR">
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cadastro de Voluntário — ONG Mãos Amigas" />
-  <meta name="twitter:description" content="Cadastre-se como voluntário e participe de ações sociais transformadoras." />
-  <meta name="twitter:image" content="imagens/ogcover.png" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cadastro de Voluntário — ONG Mãos Amigas">
+  <meta name="twitter:description" content="Cadastre-se como voluntário e participe de ações sociais transformadoras.">
+  <meta name="twitter:image" content="imagens/ogcover.png">
 
   <!-- CSS principal -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="page--cadastro">
@@ -32,7 +32,7 @@
     <div class="container header__inner">
       <nav class="navbar flex items-center justify-between" aria-label="Menu principal">
         <a href="index.html" class="brand flex items-center gap-2">
-          <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="120" height="120" loading="lazy" />
+          <img src="imagens/logo.png" alt="Logo da ONG Mãos Amigas" class="logo" width="120" height="120" loading="lazy">
           <span>ONG Mãos Amigas</span>
         </a>
 
@@ -61,30 +61,30 @@
 
         <div class="field">
           <label for="nome">Nome completo</label>
-          <input id="nome" name="nome" type="text" required autocomplete="name" />
+          <input id="nome" name="nome" type="text" required autocomplete="name">
         </div>
 
         <div class="field">
           <label for="cpf">CPF</label>
-          <input id="cpf" name="cpf" type="text" required inputmode="numeric" placeholder="000.000.000-00" autocomplete="off" />
+          <input id="cpf" name="cpf" type="text" required inputmode="numeric" placeholder="000.000.000-00" autocomplete="off">
           <small id="cpf-erro" class="msg-erro" aria-live="polite"></small>
         </div>
 
         <div class="field">
           <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" required autocomplete="email" />
+          <input id="email" name="email" type="email" required autocomplete="email">
           <small id="email-erro" class="msg-erro" aria-live="polite"></small>
         </div>
 
         <div class="field">
           <label for="telefone">Telefone</label>
-          <input id="telefone" name="telefone" type="tel" required inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel" />
+          <input id="telefone" name="telefone" type="tel" required inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel">
           <small id="tel-erro" class="msg-erro" aria-live="polite"></small>
         </div>
 
         <div class="field">
           <label for="nascimento">Data de nascimento</label>
-          <input id="nascimento" name="nascimento" type="date" required />
+          <input id="nascimento" name="nascimento" type="date" required>
         </div>
       </fieldset>
 
@@ -93,28 +93,28 @@
 
         <div class="field">
           <label for="cep">CEP</label>
-          <input id="cep" name="cep" type="text" required inputmode="numeric" placeholder="00000-000" autocomplete="postal-code" />
+          <input id="cep" name="cep" type="text" required inputmode="numeric" placeholder="00000-000" autocomplete="postal-code">
           <small id="cep-erro" class="msg-erro" aria-live="polite"></small>
         </div>
 
         <div class="field">
           <label for="logradouro">Logradouro</label>
-          <input id="logradouro" name="logradouro" type="text" required autocomplete="address-line1" />
+          <input id="logradouro" name="logradouro" type="text" required autocomplete="address-line1">
         </div>
 
         <div class="field">
           <label for="numero">Número</label>
-          <input id="numero" name="numero" type="text" required autocomplete="address-line2" />
+          <input id="numero" name="numero" type="text" required autocomplete="address-line2">
         </div>
 
         <div class="field">
           <label for="bairro">Bairro</label>
-          <input id="bairro" name="bairro" type="text" required autocomplete="address-level3" />
+          <input id="bairro" name="bairro" type="text" required autocomplete="address-level3">
         </div>
 
         <div class="field">
           <label for="cidade">Cidade</label>
-          <input id="cidade" name="cidade" type="text" required autocomplete="address-level2" />
+          <input id="cidade" name="cidade" type="text" required autocomplete="address-level2">
         </div>
 
         <div class="field">
@@ -156,7 +156,7 @@
       </button>
 
       <figure id="qr-area" hidden class="mt-1">
-        <img src="imagens/qrpix.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240" />
+        <img src="imagens/pix-qr.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240">
         <figcaption>Escaneie o QR Code para doar via PIX.</figcaption>
       </figure>
     </section>
