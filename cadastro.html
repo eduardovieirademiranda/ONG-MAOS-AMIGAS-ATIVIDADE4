@@ -21,6 +21,66 @@
 
   <!-- CSS principal -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- jQuery + jQuery Mask -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" referrerpolicy="no-referrer"></script>
+
+  <script>
+    // Máscaras e lógica de formulário
+    document.addEventListener("DOMContentLoaded", function () {
+      // Aplica máscaras
+      if (window.jQuery && jQuery.fn.mask) {
+        $('#cpf').mask('000.000.000-00');
+        $('#telefone').mask('(00) 00000-0000');
+        $('#cep').mask('00000-000');
+      }
+
+      // Toggle do QR Code PIX
+      const btnQR = document.getElementById("btn-qr");
+      const qrArea = document.getElementById("qr-area");
+      if (btnQR && qrArea) {
+        btnQR.addEventListener("click", () => {
+          const ativo = qrArea.hasAttribute("hidden");
+          if (ativo) {
+            qrArea.removeAttribute("hidden");
+            btnQR.textContent = "Ocultar QR do PIX";
+            btnQR.setAttribute("aria-expanded", "true");
+          } else {
+            qrArea.setAttribute("hidden", "");
+            btnQR.textContent = "Mostrar QR do PIX";
+            btnQR.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Validação e feedback
+      const form = document.getElementById("form-cadastro");
+      const feedback = document.getElementById("form-feedback");
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let campos = form.querySelectorAll("input[required], select[required]");
+          let valido = true;
+          campos.forEach((campo) => {
+            if (!campo.value.trim()) {
+              campo.classList.add("erro");
+              valido = false;
+            } else {
+              campo.classList.remove("erro");
+            }
+          });
+
+          if (!valido) return;
+
+          form.reset();
+          feedback.hidden = false;
+          feedback.focus();
+        });
+      }
+    });
+  </script>
 </head>
 
 <body class="page--cadastro">
@@ -41,6 +101,11 @@
           <a href="projetos.html" class="botao--menu">📋 Projetos</a>
           <a href="cadastro.html" class="ativo botao--menu" aria-current="page">🤝 Cadastro</a>
         </div>
+            <!-- Botão de alternância de tema -->
+    <button id="toggle-tema" class="botao--secundario" aria-pressed="false" aria-label="Alternar modo de cor">
+      🌙 Modo Escuro
+    </button>
+
       </nav>
     </div>
   </header>
@@ -55,35 +120,33 @@
       ✅ Cadastro enviado! Em breve entraremos em contato.
     </div>
 
+    <!-- FORMULÁRIO -->
     <form id="form-cadastro" class="mt-2" novalidate>
       <fieldset>
         <legend>Dados Pessoais</legend>
 
         <div class="field">
-          <label for="nome">Nome completo</label>
+          <label for="nome">Nome completo *</label>
           <input id="nome" name="nome" type="text" required autocomplete="name">
         </div>
 
         <div class="field">
-          <label for="cpf">CPF</label>
-          <input id="cpf" name="cpf" type="text" required inputmode="numeric" placeholder="000.000.000-00" autocomplete="off">
-          <small id="cpf-erro" class="msg-erro" aria-live="polite"></small>
+          <label for="cpf">CPF *</label>
+          <input id="cpf" name="cpf" type="text" required inputmode="numeric" placeholder="000.000.000-00">
         </div>
 
         <div class="field">
-          <label for="email">E-mail</label>
+          <label for="email">E-mail *</label>
           <input id="email" name="email" type="email" required autocomplete="email">
-          <small id="email-erro" class="msg-erro" aria-live="polite"></small>
         </div>
 
         <div class="field">
-          <label for="telefone">Telefone</label>
-          <input id="telefone" name="telefone" type="tel" required inputmode="tel" placeholder="(00) 00000-0000" autocomplete="tel">
-          <small id="tel-erro" class="msg-erro" aria-live="polite"></small>
+          <label for="telefone">Telefone *</label>
+          <input id="telefone" name="telefone" type="tel" required inputmode="tel" placeholder="(00) 00000-0000">
         </div>
 
         <div class="field">
-          <label for="nascimento">Data de nascimento</label>
+          <label for="nascimento">Data de nascimento *</label>
           <input id="nascimento" name="nascimento" type="date" required>
         </div>
       </fieldset>
@@ -92,33 +155,32 @@
         <legend>Endereço</legend>
 
         <div class="field">
-          <label for="cep">CEP</label>
-          <input id="cep" name="cep" type="text" required inputmode="numeric" placeholder="00000-000" autocomplete="postal-code">
-          <small id="cep-erro" class="msg-erro" aria-live="polite"></small>
+          <label for="cep">CEP *</label>
+          <input id="cep" name="cep" type="text" required inputmode="numeric" placeholder="00000-000">
         </div>
 
         <div class="field">
-          <label for="logradouro">Logradouro</label>
+          <label for="logradouro">Logradouro *</label>
           <input id="logradouro" name="logradouro" type="text" required autocomplete="address-line1">
         </div>
 
         <div class="field">
-          <label for="numero">Número</label>
+          <label for="numero">Número *</label>
           <input id="numero" name="numero" type="text" required autocomplete="address-line2">
         </div>
 
         <div class="field">
-          <label for="bairro">Bairro</label>
-          <input id="bairro" name="bairro" type="text" required autocomplete="address-level3">
+          <label for="bairro">Bairro *</label>
+          <input id="bairro" name="bairro" type="text" required>
         </div>
 
         <div class="field">
-          <label for="cidade">Cidade</label>
+          <label for="cidade">Cidade *</label>
           <input id="cidade" name="cidade" type="text" required autocomplete="address-level2">
         </div>
 
         <div class="field">
-          <label for="uf">Estado (UF)</label>
+          <label for="uf">Estado (UF) *</label>
           <select id="uf" name="uf" required>
             <option value="" selected disabled>Selecione</option>
             <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
@@ -135,7 +197,7 @@
       <button type="submit" class="btn mt-2">Enviar cadastro</button>
 
       <p class="mt-1" id="privacidade">
-        <small>Ao enviar, você concorda com o uso dos dados para fins de contato sobre ações e projetos da ONG.
+        <small>Ao enviar, você concorda com o uso dos dados para contato sobre ações e projetos da ONG.
         Para solicitar remoção ou correção, envie e-mail para
         <a href="mailto:ongmaosamigas@gmail.com">ongmaosamigas@gmail.com</a>.</small>
       </p>
@@ -156,7 +218,7 @@
       </button>
 
       <figure id="qr-area" hidden class="mt-1">
-        <img src="imagens/pix-qr.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240">
+        <img src="imagens/pix-qr.png" alt="QR Code do PIX da ONG Mãos Amigas" width="240" height="240" loading="lazy">
         <figcaption>Escaneie o QR Code para doar via PIX.</figcaption>
       </figure>
     </section>
@@ -171,10 +233,6 @@
   <footer class="footer center">
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
-
-  <!-- jQuery + jQuery Mask -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" referrerpolicy="no-referrer"></script>
 
   <!-- JS principal -->
   <script src="js/script.js"></script>

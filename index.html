@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ONG Mãos Amigas — Página Inicial</title>
   <meta name="description" content="Conheça a ONG Mãos Amigas, nossos projetos sociais e como participar como voluntário ou doador.">
+  <link rel="canonical" href="https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4/index.html">
+  <meta name="theme-color" content="#0077b6">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -19,7 +21,25 @@
   <meta name="twitter:description" content="Conheça a ONG Mãos Amigas e participe dos nossos projetos.">
   <meta name="twitter:image" content="imagens/ogcover.png">
 
+  <!-- Ícones opcionais (se tiver os arquivos) -->
+  <link rel="icon" href="imagens/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">
+
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Dados estruturados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "ONG Mãos Amigas",
+    "url": "https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4/index.html",
+    "logo": "https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4/imagens/logo.png",
+    "sameAs": [
+      "mailto:ongmaosamigas@gmail.com"
+    ]
+  }
+  </script>
 </head>
 
 <body class="page--home">
@@ -27,7 +47,7 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
   <!-- CABEÇALHO -->
-  <header class="header">
+  <header class="header" role="banner">
     <div class="container header__inner">
       <nav class="navbar flex items-center justify-between" aria-label="Menu principal">
         <a href="index.html" class="brand flex items-center gap-2">
@@ -35,35 +55,63 @@
           <span>ONG Mãos Amigas</span>
         </a>
 
-        <div class="links menu__list flex gap-2">
+        <div class="links menu__list flex gap-2" role="navigation">
           <a href="index.html" class="ativo botao--menu" aria-current="page">🏠 Início</a>
           <a href="projetos.html" class="botao--menu">📋 Projetos</a>
           <a href="cadastro.html" class="botao--menu">🤝 Cadastro</a>
         </div>
+        <!-- Botão de alternância de tema -->
+      <button id="toggle-tema" class="botao--secundario" aria-pressed="false" aria-label="Alternar modo de cor">
+        🌙 Modo Escuro
+      </button>
       </nav>
     </div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main id="conteudo" class="container">
+  <main id="conteudo" class="container" role="main">
     <!-- BOTÃO SPA -->
     <div class="spa-toggle center">
-      <button id="togglePage" class="botao--principal" type="button" aria-controls="conteudo">
+      <button
+        id="togglePage"
+        class="botao--principal"
+        type="button"
+        aria-controls="home destaque"
+        aria-label="Alternar entre as seções Home e Destaque">
         Alternar Página
       </button>
     </div>
 
     <!-- NAVEGAÇÃO POR ABAS -->
     <nav class="menu__tabs" role="tablist" aria-label="Navegação entre seções">
-      <a id="tab-home" class="tab ativo" role="tab" href="#home" data-page="home"
-         aria-controls="home" aria-selected="true">🏠 Home</a>
-      <a id="tab-destaque" class="tab" role="tab" href="#destaque" data-page="destaque"
-         aria-controls="destaque" aria-selected="false">⭐ Destaque</a>
+      <a
+        id="tab-home"
+        class="tab ativo"
+        role="tab"
+        href="#home"
+        data-page="home"
+        aria-controls="home"
+        aria-selected="true"
+        tabindex="0">🏠 Home</a>
+
+      <a
+        id="tab-destaque"
+        class="tab"
+        role="tab"
+        href="#destaque"
+        data-page="destaque"
+        aria-controls="destaque"
+        aria-selected="false"
+        tabindex="-1">⭐ Destaque</a>
     </nav>
 
     <!-- SEÇÃO HOME -->
-    <section id="home" class="tab-content" role="tabpanel" aria-labelledby="tab-home">
-      <h1 id="Juntos">Juntos Podemos Transformar Vidas</h1>
+    <section
+      id="home"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-home">
+      <h1 id="Juntos" aria-live="polite">Juntos Podemos Transformar Vidas</h1>
       <p>Conectamos pessoas e comunidades para construir um futuro mais solidário e sustentável.</p>
 
       <h2>Quem Somos</h2>
@@ -71,35 +119,59 @@
         A <strong>ONG Mãos Amigas</strong> é uma organização sem fins lucrativos dedicada a promover a solidariedade e o desenvolvimento social por meio de ações que transformam vidas.
       </p>
 
-      <img src="imagens/voluntario-3.jpg" alt="Equipe de voluntários da ONG Mãos Amigas em atividade comunitária" width="800" height="450" loading="lazy">
+      <figure>
+        <img src="imagens/voluntario-3.jpg" alt="Equipe de voluntários da ONG Mãos Amigas em atividade comunitária" width="800" height="450" loading="lazy">
+        <figcaption>Voluntários em ação nas comunidades.</figcaption>
+      </figure>
 
       <h2>Como Ajudar</h2>
       <p>Você pode contribuir com nossos projetos de várias formas. Cada doação ajuda a transformar vidas!</p>
       <ul>
         <li><strong>PIX:</strong> 11.222.333/0011-44</li>
-        <li><strong>E-mail:</strong> ongmaosamigas@gmail.com</li>
+        <li><strong>E-mail:</strong> <a href="mailto:ongmaosamigas@gmail.com">ongmaosamigas@gmail.com</a></li>
       </ul>
     </section>
 
     <!-- SEÇÃO DESTAQUE -->
-    <section id="destaque" class="tab-content" role="tabpanel" aria-labelledby="tab-destaque" hidden>
+    <section
+      id="destaque"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-destaque"
+      hidden>
       <h2>Projetos em Destaque</h2>
       <p>Confira algumas de nossas principais ações sociais em andamento.</p>
 
-      <article>
+      <article class="card">
         <h3>Projeto Esperança</h3>
         <p>Iniciativa voltada a crianças e adolescentes, oferecendo atividades esportivas e educativas.</p>
       </article>
 
-      <article>
+      <article class="card">
         <h3>Doação Solidária</h3>
         <p>Campanha permanente de arrecadação de alimentos e roupas para famílias em situação de vulnerabilidade.</p>
       </article>
     </section>
+
+    <!-- Fallback quando JS estiver desabilitado -->
+    <noscript>
+      <section aria-label="Conteúdo sem JavaScript">
+        <hr>
+        <h2>Conteúdo Completo</h2>
+        <p>Seu navegador está com o JavaScript desativado. Abaixo, exibimos todas as seções:</p>
+        <div>
+          <!-- Clona um resumo das seções principais -->
+          <h3>Home</h3>
+          <p>Conectamos pessoas e comunidades para construir um futuro mais solidário e sustentável.</p>
+          <h3>Destaque</h3>
+          <p>Confira algumas de nossas principais ações sociais em andamento.</p>
+        </div>
+      </section>
+    </noscript>
   </main>
 
   <!-- RODAPÉ -->
-  <footer class="footer center">
+  <footer class="footer center" role="contentinfo">
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 

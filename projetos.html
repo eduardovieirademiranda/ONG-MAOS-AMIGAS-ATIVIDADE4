@@ -23,6 +23,9 @@
 </head>
 
 <body class="page--projetos">
+  <!-- Skip link -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
   <!-- CABEÇALHO -->
   <header class="header">
     <div class="container header__inner">
@@ -37,24 +40,29 @@
           <a href="projetos.html" class="ativo botao--menu" aria-current="page">📋 Projetos</a>
           <a href="cadastro.html" class="botao--menu">🤝 Cadastro</a>
         </div>
+              <!-- Botão de alternância de tema -->
+      <button id="toggle-tema" class="botao--secundario" aria-pressed="false" aria-label="Alternar modo de cor">
+        🌙 Modo Escuro
+      </button>
+
       </nav>
     </div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="section">
-    <section class="container">
-      <h2>Nossos Projetos Sociais</h2>
+  <main id="conteudo" class="section" role="main">
+    <section class="container" aria-labelledby="titulo-pagina">
+      <h1 id="titulo-pagina">Nossos Projetos Sociais</h1>
       <p>Conheça algumas das ações que realizamos para melhorar a qualidade de vida das pessoas e promover a solidariedade nas comunidades.</p>
     </section>
 
-    <section class="container grid-12 mt-3">
-      <h2>Projetos em Destaque</h2>
+    <section class="container grid-12 mt-3" aria-labelledby="titulo-destaque">
+      <h2 id="titulo-destaque">Projetos em Destaque</h2>
 
       <article class="card md:col-6 col-12">
         <div class="card__body">
           <h3 class="card__title">Projeto Esperança</h3>
-          <img src="imagens/esporte-saude.jpg" alt="Crianças em atividades do projeto Esperança" width="340">
+          <img src="imagens/esporte-saude.jpg" alt="Crianças em atividades do Projeto Esperança" width="340" height="220" loading="lazy">
           <p>Voltado para crianças em situação de vulnerabilidade, o projeto oferece atividades esportivas e educativas que incentivam o desenvolvimento pessoal e social.</p>
         </div>
       </article>
@@ -62,7 +70,7 @@
       <article class="card md:col-6 col-12">
         <div class="card__body">
           <h3 class="card__title">Projeto Vida em Ação</h3>
-          <img src="imagens/Hortas.jpg" alt="Voluntários ajudando em um projeto de Hortas" width="340">
+          <img src="imagens/Hortas.jpg" alt="Voluntários ajudando em um projeto de hortas comunitárias" width="340" height="220" loading="lazy">
           <p>Promove campanhas de arrecadação de alimentos e produtos de higiene, garantindo dignidade para famílias em situação de vulnerabilidade.</p>
         </div>
       </article>
@@ -70,11 +78,10 @@
   </main>
 
   <!-- RODAPÉ -->
-  <footer class="footer center">
+  <footer class="footer center" role="contentinfo">
     <p>&copy; 2025 ONG Mãos Amigas — Todos os direitos reservados.</p>
   </footer>
 
   <script src="js/script.js"></script>
-
 </body>
 </html>
