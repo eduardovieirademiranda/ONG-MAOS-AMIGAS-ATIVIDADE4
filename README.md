@@ -10,7 +10,7 @@ O projeto integra todos os aprendizados das atividades anteriores, resultando em
 ## 🧭 Estrutura do Projeto
 
 | Arquivo / Pasta | Função |
-|------------------|--------|
+|-----------------|--------|
 | `index.html` | Página inicial da ONG |
 | `projetos.html` | Apresenta os principais projetos sociais |
 | `cadastro.html` | Formulário de inscrição de voluntários |
@@ -22,17 +22,17 @@ O projeto integra todos os aprendizados das atividades anteriores, resultando em
 
 ## 🌗 Recursos e Funcionalidades
 
-- 🌙 **Dark Mode automático** (ativado conforme o tema do sistema)  
+- 🌙 **Dark Mode automático** (conforme o tema do sistema)  
 - ♿ **Acessibilidade (WCAG 2.1 AA)**  
   - Foco visível (`:focus-visible`)  
-  - Links e botões com contraste mínimo ≥ 4.5 : 1  
+  - Links e botões com contraste mínimo ≥ 4.5:1  
   - Estrutura semântica com `header`, `main`, `footer`  
   - Navegação por teclado e *skip link* no topo da página  
   - Atributos `aria-current="page"` para indicar a página ativa  
-- 🧠 **SPA simples** com JavaScript + localStorage  
+- 🧠 **SPA simples** com JavaScript + `localStorage`  
 - 🧩 **GitFlow completo** com branches `main`, `develop`, `feature/a11y-teclado`, `release/v1.0`  
-- ☁️ **Deploy** realizado no GitHub Pages:  
-  👉 [https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4](https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4)
+- ☁️ **Deploy** no GitHub Pages:  
+  👉 https://eduardovieirademiranda.github.io/ONG-MAOS-AMIGAS-ATIVIDADE4
 
 ---
 
@@ -41,64 +41,72 @@ O projeto integra todos os aprendizados das atividades anteriores, resultando em
 A *Home* apresenta a ONG, seu propósito e formas de ajudar.
 
 | Seção | Descrição |
-|-------|------------|
+|------|-----------|
 | **Hero (Topo)** | Mensagem principal *“Juntos Podemos Transformar o Mundo”* com atualização dinâmica via JavaScript. |
 | **Quem Somos** | Explica a missão da ONG e mostra imagem ilustrativa. |
-| **Como Ajudar** | Mostra as opções de doação via PIX e QR Code. |
+| **Como Ajudar** | Opções de doação via PIX e QR Code. |
 | **Projetos em Destaque** | Cards com dois projetos sociais em destaque. |
 
 ---
 
-## 💡 Página de Projetos
+## 💡 Página de Projetos (projetos.html)
 
 | Projeto | Descrição |
-|----------|------------|
+|--------|-----------|
 | **Projeto Esperança** | Atividades recreativas e educacionais para crianças em situação de vulnerabilidade. |
 | **Projeto Transformar** | Oficinas e cursos de capacitação profissional para jovens e adultos. |
 
-Os projetos são exibidos em **cards responsivos**, com imagens e textos otimizados para leitura.
+Cards responsivos com imagens e textos otimizados para leitura.
 
 ---
 
-## 🧾 Página de Cadastro
+## 🧾 Página de Cadastro (cadastro.html)
 
 Formulário completo para novos voluntários:
 
 - Nome completo  
 - E-mail  
-- Telefone (máscara automática via jQuery Mask)  
+- Telefone (máscara via **jQuery Mask**)  
 - CPF e CEP (máscara + validação)  
 - Cidade e Área de interesse  
 - Mensagem opcional  
 
-📋 Inclui também:
-- Mensagens de validação padrão do navegador  
-- Cards laterais com informações de doação e motivos para participar  
+**Também inclui**:  
+Mensagens de validação do navegador e cards laterais com informações de doação e motivos para participar.
 
 ---
 
 ## 🧩 Scripts Implementados
 
--javascript
-
+``js
 // Atualiza o título dinamicamente na Home
 const titulo = document.getElementById("Juntos");
 if (titulo) titulo.textContent = "Juntos Podemos Transformar Vidas";
 
-// Salva a última página visitada (SPA)
-localStorage.setItem("maosamigas.pagina", id);
 
-// Alternância automática de tema (dark/light)
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.dataset.theme = 'dark';
+// Exemplo de SPA: salvar última página visitada
+function salvarPagina(id) {
+  localStorage.setItem("maosamigas.pagina", id);
 }
 
-🔀 Estrutura GitFlow
-Branch	Função
-main	Versão estável e publicada no GitHub Pages
-develop	Integração de recursos antes do release
-feature/a11y-teclado	Implementação da acessibilidade via teclado
-release/v1.0	Versão de preparação antes da publicação
+// Alternância automática de tema (dark/light)
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  document.documentElement.dataset.theme = "dark";
+}
+
+"🧭 GitFlow utilizado”
+
+A estratégia adotada seguiu o padrão **GitFlow**, garantindo um fluxo organizado de desenvolvimento com versionamento semântico e histórico limpo.  
+As principais branches e suas funções estão descritas abaixo:
+
+| Branch | Função |
+|--------|--------|
+| **main** | Versão estável e publicada no GitHub Pages |
+| **develop** | Integração de recursos antes do release |
+| **feature/a11y-teclado** | Implementação da acessibilidade via teclado |
+| **release/v1.0** | Versão de preparação antes da publicação |
+
+![Fluxo GitFlow — ONG Mãos Amigas](https://cdn.jsdelivr.net/gh/eduardovieirademiranda/ONG-MAOS-AMIGAS-ATIVIDADE4@main/imagens/docs/gitflow.png)
 
 📌 Tag final: v1.0
 💬 Mensagem de commit: Finaliza Atividade 4 — integração completa e release v1.0
